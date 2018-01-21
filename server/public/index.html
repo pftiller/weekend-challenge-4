@@ -16,11 +16,12 @@
     <main ng-controller="PhotoController as vm">
         <div class="grid-container">
             <div class="grid-item" ng-repeat="photo in vm.photoList" ng-style="{'background-image':'url({{photo.file_path}})'}">
-                
+                <aside class="tallies">
+                    <div class="likes"><p>{{photo.likes}}</p></div>
+                    <div class="hearts"><p>{{photo.hearts}}</p></div>
+                </aside>
                 <div class="photoDetails" data="{{photo.id}}">
-                    <p>{{photo.title}}</p>
-                    <p>{{photo.likes}}</p>
-                    <p>{{photo.hearts}}</p>
+                    <h1>{{photo.title}}</h1>
                     <div ng-repeat="reaction in vm.reactions">
                         <button data="{{reaction.id}}" class="{{reaction.class}}" ng-click="vm.updateCounts(photo.id, reaction.id)"></button>
                     </div>
