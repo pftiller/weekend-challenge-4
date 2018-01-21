@@ -3,7 +3,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    width:95%;
+    width:90%;
     margin:0 auto;
     background-color:#004699;
 }
@@ -27,12 +27,51 @@ body {
     right: 0;
     margin: 10px 0 0 0;
 }
-.tallies p {
-    font-size: 20px;
-    text-align: center;
-    color: #000;
-    vertical-align: middle;
+h1 {
+    color:#fff;
+    font-size:56px;
+    text-align:center;
 }
+h2 {
+    color:#333333;
+    font-size:28px;
+    display:inline-block;
+}
+.reaction-buttons {
+    margin-top:20px;
+    widows: 30%;
+    float:right;
+    display:inline-block;
+}
+.fa {
+    font-size:28px;
+}
+button {
+    background: none !important;
+    color: inherit;
+    border: none;
+    padding: 0! important;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit !important;
+    width: 28px;
+    height:28px;
+    margin-right:25px;
+}
+button {
+    background: none !important;
+    color: inherit;
+    border: none;
+    padding: 0! important;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit !important;
+    width: 28px;
+    height:28px;
+    margin-right:25px;
+}
+
+
 
   .photoDetails {
     background-color: rgba(179, 214, 255, 0.8);
@@ -74,4 +113,11 @@ body {
     width:30px; 
     height:25px;
     display:inline-block;
+}
+.likes p,
+.hearts p {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #000;
 }

@@ -26,7 +26,12 @@ app.controller('PhotoController', ['$http', function($http){
 
     self.getPhotos();
     
-
+        
+    self.hover = function() {
+        // Shows/hides the delete button on hover
+        show = ! show;
+    };
+    
     self.updateCounts = function(photoID, reactionID) {
         let update = {};
         if(reactionID == 1) {
