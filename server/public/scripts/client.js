@@ -6,7 +6,13 @@ app.controller('PhotoController', ['$http', function($http){
     console.log('controller loaded');
     var self = this;
 
+   
+
     self.photoList = [];
+
+    // this.imgBackground = {
+    //     "background-color": 
+    // }
 
     self.getPhotos = function() {
         $http({
