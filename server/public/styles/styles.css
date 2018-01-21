@@ -33,18 +33,27 @@ h1 {
     text-align:center;
 }
 h2 {
+    margin-left:15px;
+    vertical-align: middle;
     color:#333333;
     font-size:28px;
     display:inline-block;
 }
 .reaction-buttons {
     margin-top:20px;
-    widows: 30%;
+    widows: 35%;
     float:right;
     display:inline-block;
 }
 .fa {
     font-size:28px;
+}
+.fa-heart:hover {
+    color: #ee8f8d;
+}
+
+.fa-thumbs-up:hover {
+    color:#395ca9;
 }
 button {
     background: none !important;
@@ -98,26 +107,39 @@ button {
   }
   .likes {
     background: url('/assets/like.png') center center no-repeat;
-    background-size: 30px 25px;
+    background-size: 40px 35px;
   }
   .hearts {
     background: url('/assets/heart.png') center center no-repeat;
-    background-size: 30px 25px;
+    background-size: 40px 35px;
 
 
 }
 .likes,
 .hearts {
-    float: right;
-    margin-right:5px;
-    width:30px; 
-    height:25px;
+    float:right;
+    margin-right:10px;
+    width:45px; 
+    height:35px;
     display:inline-block;
 }
 .likes p,
 .hearts p {
-    font-size: 18px;
+    font-size: 28px;
     font-weight: bold;
     text-align: center;
     color: #000;
+}
+.photoDetails {
+    -webkit-transition: all linear 0.5s;
+    transition: all linear 0.5s;
+    opacity: 1;
+}
+
+.photoDetails.ng-hide-add,
+.photoDetails.ng-hide-remove {
+    display: inline-block !important;
+}
+.photoDetails.ng-hide {
+    opacity: 0;
 }
