@@ -4,8 +4,8 @@ const config = {
     database: 'pauls_photo_gallery',
     host: 'localhost',
     port: 5432,
-    max: 10,
-    idleTimeoutMillis: 5000
+    idleTimeoutMillis: 5000,
+    max: 10
 };
 
 const pool = new Pool(config);

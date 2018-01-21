@@ -14,7 +14,12 @@
     <script src="scripts/client.js" type="text/javascript"></script>
 
 </head>
-<body>
+<body ng-app="photoApp">
+    <main ng-controller="PhotoController as vm">
     <h1>Hello World</h1>
+        <ul>
+            <li ng-repeat="photo in vm.photoList"><img ng-src="{{photo.file_path}}"></li>
+        </ul>
+</main>
 </body>
 </html>
