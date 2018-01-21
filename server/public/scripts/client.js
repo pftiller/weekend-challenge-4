@@ -28,14 +28,17 @@ app.controller('PhotoController', ['$http', function($http){
     
 
     self.updateCounts = function(photoID, reactionID) {
+        let update = {};
         if(reactionID == 1) {
-            let update = {
-                likes: 1
+            update = {
+                likes: 1,
+                hearts: 0
             }
         }
         else {
-            let update = {
-                hearts: 1
+            update = {
+                hearts: 1,
+                likes: 0
             }
         }
         let id = photoID;
@@ -43,10 +46,11 @@ app.controller('PhotoController', ['$http', function($http){
         $http({
             method: 'PUT',
             url: '/photos/' + id,
-            data: edit
+            data: update
         })
         .then(function(response){
             console.log('the result of the put is', response);
+            self.getPhotos();
         });
     };
 

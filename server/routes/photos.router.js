@@ -16,4 +16,29 @@ router.get('/', (req, res)=>{
         });
 });
 
+router.put('/:id', (req, res)=>{
+    let queryText = ``;
+    if(req.body.likes == 1) {
+        queryText = `UPDATE photos 
+                    SET likes = likes + 1, hearts = hearts + 0
+                    WHERE id = $1`
+    }
+    else {
+        queryText = `UPDATE photos 
+        SET hearts = hearts + 1, likes = likes + 0
+        WHERE id = $1`
+    }
+    console.log(queryText);
+    pool.query(queryText, [req.params.id])
+        .then((result)=>{
+            console.log('put success resulted in this', result);
+            res.send(result.rows);
+        })
+        .catch((err)=>{
+            console.log('put error resulted in this', err);
+            res.sendStatus(500);
+        });
+});
+
+
 module.exports = router;
