@@ -17,10 +17,14 @@
         <div class="grid-container">
             <div class="grid-item" ng-repeat="photo in vm.photoList" ng-style="{'background-image':'url({{photo.file_path}})'}">
                 
-                <div class="photoDetails" ng-model="{{photo.id}}">
+                <div class="photoDetails" data="{{photo.id}}">
                     <p>{{photo.title}}</p>
-                    <button ng-click="#" class="fa fa-thumbs-up"></a
-                    ><button ng-click="#" class="fa fa-heart"></a>
+                    <div ng-repeat="reaction in vm.reactions">
+                        <button data="{{reaction.id}}" class="{{reaction.class}}" ng-click="vm.updateCounts(photo.id, reaction.id)"></button>
+                    </div>
+
+
+                 
                 </div>
 
 

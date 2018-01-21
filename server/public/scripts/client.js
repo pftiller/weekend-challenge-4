@@ -5,14 +5,13 @@ var app = angular.module('photoApp', []);
 app.controller('PhotoController', ['$http', function($http){
     console.log('controller loaded');
     var self = this;
-
+    self.reactions = [ 
+        { name: 'Like', class: 'fa fa-thumbs-up', id: 1 },
+        { name: 'Heart', class: 'fa fa-heart', id: 2 }
+    ];
    
 
     self.photoList = [];
-
-    // this.imgBackground = {
-    //     "background-color": 
-    // }
 
     self.getPhotos = function() {
         $http({
@@ -28,27 +27,29 @@ app.controller('PhotoController', ['$http', function($http){
     self.getPhotos();
     
 
+    self.updateCounts = function(photoID, reactionID) {
+        if(reactionID == 1) {
+            let update = {
+                likes: 1
+            }
+        }
+        else {
+            let update = {
+                hearts: 1
+            }
+        }
+        let id = photoID;
+                
+        $http({
+            method: 'PUT',
+            url: '/photos/' + id,
+            data: edit
+        })
+        .then(function(response){
+            console.log('the result of the put is', response);
+        });
+    };
+
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }]);
