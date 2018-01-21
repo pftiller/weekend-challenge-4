@@ -17,10 +17,10 @@
         <div class="grid-container">
             <div class="grid-item" ng-repeat="photo in vm.photoList" ng-style="{'background-image':'url({{photo.file_path}})'}">
                 
-                <div class="photoDetails">
+                <div class="photoDetails" ng-model="{{photo.id}}">
                     <p>{{photo.title}}</p>
-                    <a ng-ref="#" class="fa fa-thumbs-up"></a
-                    ><a ng-ref="#" class="fa fa-heart"></a>
+                    <button ng-click="#" class="fa fa-thumbs-up"></a
+                    ><button ng-click="#" class="fa fa-heart"></a>
                 </div>
 
 

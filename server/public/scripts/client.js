@@ -28,7 +28,7 @@ app.controller('PhotoController', ['$http', function($http){
     self.getPhotos();
     
 
-
+    
 
 
 
