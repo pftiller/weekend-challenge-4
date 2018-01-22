@@ -19,7 +19,7 @@
                 <section ng-controller="PhotoController as vm">
                     <div class="container">
                             <div class="flex-row row full-height">
-                                    <div class="col-xs-6 col-sm-4 col-lg-3" ng-repeat="photo in vm.photoList">
+                                    <div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="photo in vm.photoList">
                                     <!-- Card Flip -->
                                     <div class="flip-container" ng-click="flip = !flip" ng-class="{'flip': flip}">
                                             <div class="flipper">
@@ -42,7 +42,18 @@
                                                 </div>
                                                 <!-- back content -->
                                                 <div class="back">
-                                                        <p>Hi</p>
+                                                       
+                                                        <h2>{{photo.title}}</h2>
+                                                        <p>{{photo.description}}</p>
+                                                        <aside class="tallies">
+                                                                <div class="likes">
+                                                                   <p>{{photo.likes}}</p>
+                                                                </div>
+                                                                <div class="hearts">
+                                                                   <p>{{photo.hearts}}</p>
+                                                                </div>
+                                                             </aside>
+                                                        
                                                      </div>
                                             </div>
                                         </div>
@@ -51,7 +62,7 @@
                                 </div>
                                 </div>
                         </div>
-                    
+
              </main>
 </body>
 </html>

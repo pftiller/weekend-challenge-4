@@ -56,14 +56,3 @@ function PhotoController($http) {
     
 
 };
-app.directive("flipReveal", function() {
-    return {
-      restrict: 'E',
-      replace: true,
-      templateUrl: 'template.html',
-      scope: {
-        url: '=',
-        flip: '='
-      }
-    }
-  })
