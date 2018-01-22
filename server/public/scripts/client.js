@@ -1,41 +1,34 @@
 console.log('client.js loaded');
+var app = angular.module('photoApp', ['ngAnimate']);
 
-var app = angular.module('photoApp', []);
+app.controller('PhotoController', ['$http', PhotoController]);
 
-app.controller('PhotoController', ['$http', function($http){
+function PhotoController($http) {
     console.log('controller loaded');
-    var self = this;
-    self.reactions = [ 
+    var vm = this;
+    vm.reactions = [ 
         { name: 'Like', class: 'fa fa-thumbs-up', id: 1 },
         { name: 'Heart', class: 'fa fa-heart', id: 2 }
     ];
    
 
-    self.photoList = [];
+    vm.photoList = [];
 
-    self.getPhotos = function() {
+    vm.getPhotos = function() {
         $http({
             method: 'GET',
             url: '/photos'
         })
         .then(function(response){
             console.log('here is the response', response.data);
-            self.photoList = response.data
+            vm.photoList = response.data
         });
     };
 
-    self.getPhotos();
-    
-        
-    self.hoverIn = function(){
-        self.hover = true;
-    };
+   vm.getPhotos();
 
-    self.hoverOut = function(){
-        self.hover = false;
-    };
 
-    self.updateCounts = function(photoID, reactionID) {
+   vm.updateCounts = function(photoID, reactionID) {
         let update = {};
         if(reactionID == 1) {
             update = {
@@ -58,10 +51,10 @@ app.controller('PhotoController', ['$http', function($http){
         })
         .then(function(response){
             console.log('the result of the put is', response);
-            self.getPhotos();
+            vm.getPhotos();
         });
     };
 
     
 
-}]);
+};

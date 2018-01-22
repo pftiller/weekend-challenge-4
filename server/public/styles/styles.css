@@ -7,18 +7,49 @@ body {
     margin:0 auto;
     background-color:#004699;
 }
-
-.grid-container {
+  .flip-container {
+    perspective: 1200x;
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto;
   }
-  .grid-item {
+  .flip-container .flipped {
+    -webkit-transform: rotateY(180deg);
+  }
+
+  .flipper {
+    transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+   
+  }
+  .face {
+    backface-visibility: hidden;
+    height:100%;
+    width:100%;
     margin: 2.5%;
     background-repeat: no-repeat;
     background-size:cover;
     min-height:480px;
-    position:relative;
+    position: absolute;
+   
     border-radius: 10px;
+  }
+  .front {
+    z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+  }
+ .back {
+    transform: rotateY(180deg);
+    background-color: rgb(179, 214, 255);
   }
 .tallies {
     width:20%;
@@ -33,7 +64,7 @@ h1 {
     text-align:center;
 }
 h2 {
-    margin-left:15px;
+    margin-left:5px;
     vertical-align: middle;
     color:#333333;
     font-size:28px;
@@ -129,17 +160,4 @@ button {
     font-weight: bold;
     text-align: center;
     color: #000;
-}
-.photoDetails {
-    -webkit-transition: all linear 0.5s;
-    transition: all linear 0.5s;
-    opacity: 1;
-}
-
-.photoDetails.ng-hide-add,
-.photoDetails.ng-hide-remove {
-    display: inline-block !important;
-}
-.photoDetails.ng-hide {
-    opacity: 0;
 }

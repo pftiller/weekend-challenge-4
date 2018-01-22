@@ -1,43 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="photoApp">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="vendors/angular-animate.min.js" type="text/javascript"></script>
     <script src="vendors/angular.min.js" type="text/javascript"></script>
+    <script src="vendors/angular-animate.min.js" type="text/javascript"></script>
     <script src="scripts/client.js" type="text/javascript"></script>
     <script src="https://use.fontawesome.com/57b1dead55.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="styles/styles.css" />
 
 </head>
-<body ng-app="photoApp">
-    <main ng-controller="PhotoController as vm">
+<body ng-controller="PhotoController as vm">
+<main>
         <h1>Paul's Photos</h1>
-        <div class="grid-container">
-            <div class="grid-item" ng-repeat="photo in vm.photoList" ng-style="{'background-image':'url({{photo.file_path}})'}" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-                <aside class="tallies">
-                    <div class="likes"><p>{{photo.likes}}</p></div>
-                    <div class="hearts"><p>{{photo.hearts}}</p></div>
-                </aside>
-                <div  ng-show="hover" class="photoDetails" data="{{photo.id}}">
-                    <h2>{{photo.title}}</h2>
-                    <div ng-view class="reaction-buttons" ng-repeat="reaction in vm.reactions">
-                        <button data="{{reaction.id}}" class="{{reaction.class}}" ng-click="vm.updateCounts(photo.id, reaction.id)"></button>
+        <div class="container">
+        <div class="row">
+        <div class="col-sm-6 col-lg-4">
+        <div class="card-flip">
+              <div class="flip" ng-class="{'flipped':isFlipped}" ng-click="isFlipped=!isFlipped" ng-repeat="photo in vm.photoList">
+                 <div class="front" ng-style="{'background-image':'url({{photo.file_path}})'}" ng-init="photoDetails=false" ng-mouseover="photoDetails=true" ng-mouseleave="photoDetails=false">
+                    <aside class="tallies">
+                       <div class="likes">
+                          <p>{{photo.likes}}</p>
+                       </div>
+                       <div class="hearts">
+                          <p>{{photo.hearts}}</p>
+                       </div>
+                    </aside>
+                    <div ng-show="photoDetails" class="photoDetails"  data="{{photo.id}}">
+                       <h2>{{photo.title}}</h2>
+                       <div ng-view class="reaction-buttons" ng-repeat="reaction in vm.reactions">
+                          <button data="{{reaction.id}}" class="{{reaction.class}}" ng-click="vm.updateCounts(photo.id, reaction.id)"></button>
+                       </div>
                     </div>
-
-
-                 
-                </div>
-
-
-            </div>
-
-
-
-         </div>
-</main>
+                 </div>
+                 <div class="back">
+                    <p>Hi</p>
+                 </div>
+              </div>
+        </div>
+        </div>
+        </div>
+        </div>
+     </main>
 </body>
 </html>
