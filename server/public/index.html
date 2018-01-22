@@ -13,38 +13,45 @@
     <link rel="stylesheet" type="text/css" media="screen" href="styles/styles.css" />
 
 </head>
-<body ng-controller="PhotoController as vm">
-<main>
-        <h1>Paul's Photos</h1>
-        <div class="container">
-        <div class="row">
-        <div class="col-sm-6 col-lg-4">
-        <div class="card-flip">
-              <div class="flip" ng-class="{'flipped':isFlipped}" ng-click="isFlipped=!isFlipped" ng-repeat="photo in vm.photoList">
-                 <div class="front" ng-style="{'background-image':'url({{photo.file_path}})'}" ng-init="photoDetails=false" ng-mouseover="photoDetails=true" ng-mouseleave="photoDetails=false">
-                    <aside class="tallies">
-                       <div class="likes">
-                          <p>{{photo.likes}}</p>
-                       </div>
-                       <div class="hearts">
-                          <p>{{photo.hearts}}</p>
-                       </div>
-                    </aside>
-                    <div ng-show="photoDetails" class="photoDetails"  data="{{photo.id}}">
-                       <h2>{{photo.title}}</h2>
-                       <div ng-view class="reaction-buttons" ng-repeat="reaction in vm.reactions">
-                          <button data="{{reaction.id}}" class="{{reaction.class}}" ng-click="vm.updateCounts(photo.id, reaction.id)"></button>
-                       </div>
-                    </div>
-                 </div>
-                 <div class="back">
-                    <p>Hi</p>
-                 </div>
-              </div>
-        </div>
-        </div>
-        </div>
-        </div>
-     </main>
+<body>
+        <main>
+                <h1>Paul's Photos</h1>
+                <section ng-controller="PhotoController as vm">
+                    <div class="container">
+                            <div class="flex-row row full-height">
+                                    <div class="col-xs-6 col-sm-4 col-lg-3" ng-repeat="photo in vm.photoList">
+                                    <!-- Card Flip -->
+                                    <div class="flip-container" ng-click="flip = !flip" ng-class="{'flip': flip}">
+                                            <div class="flipper">
+                                                <!-- front content -->
+                                                <div class="front" ng-style="{'background-image':'url({{photo.file_path}})'} " ng-init="photoDetails=false" ng-mouseover="photoDetails=true" ng-mouseleave="photoDetails=false">
+                                                        <aside class="tallies">
+                                                                <div class="likes">
+                                                                   <p>{{photo.likes}}</p>
+                                                                </div>
+                                                                <div class="hearts">
+                                                                   <p>{{photo.hearts}}</p>
+                                                                </div>
+                                                             </aside>
+                                                  <div ng-show="photoDetails" class="photoDetails"  data="{{photo.id}}">
+                                                        <h2>{{photo.title}}</h2>
+                                                        <div ng-view class="reaction-buttons" ng-repeat="reaction in vm.reactions">
+                                                                <button data="{{reaction.id}}" class="{{reaction.class}}" ng-click="vm.updateCounts(photo.id, reaction.id)"></button>
+                                                             </div>
+                                                  </div>
+                                                </div>
+                                                <!-- back content -->
+                                                <div class="back">
+                                                        <p>Hi</p>
+                                                     </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Card Flip -->
+                                </div>
+                                </div>
+                        </div>
+                    
+             </main>
 </body>
 </html>
