@@ -20,12 +20,17 @@ router.put('/:id', (req, res)=>{
     let queryText = ``;
     if(req.body.likes == 1) {
         queryText = `UPDATE photos 
-                    SET likes = likes + 1, hearts = hearts + 0
+                    SET likes = likes + 1, hearts = hearts + 0, clicks = clicks + 0
+                    WHERE id = $1`
+    }
+    else if(req.body.hearts == 1) {
+        queryText = `UPDATE photos 
+                    SET likes = likes + 0, hearts = hearts + 1, clicks = clicks + 0
                     WHERE id = $1`
     }
     else {
         queryText = `UPDATE photos 
-        SET hearts = hearts + 1, likes = likes + 0
+        SET hearts = hearts + 0, likes = likes + 0, clicks = clicks + 1                    
         WHERE id = $1`
     }
     console.log(queryText);

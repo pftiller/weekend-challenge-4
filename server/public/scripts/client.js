@@ -7,11 +7,10 @@ function PhotoController($http) {
     console.log('controller loaded');
     var vm = this;
     vm.reactions = [ 
-        { name: 'Like', class: 'fa fa-thumbs-up', id: 1 },
-        { name: 'Heart', class: 'fa fa-heart', id: 2 }
+        { name: 'Like', class: 'fa fa-thumbs-up', visible: true, id: 1 },
+        { name: 'Heart', class: 'fa fa-heart', visible: true, id: 2 },
+        { name: 'Click', class: 'fa fa-mouse-pointer', visible: false, id: 3}
     ];
-   
-
     vm.photoList = [];
 
     vm.getPhotos = function() {
@@ -24,21 +23,31 @@ function PhotoController($http) {
             vm.photoList = response.data
         });
     };
-
    vm.getPhotos();
-   vm.updateCounts = function(photoID, reactionID) {
+
+   updateCounts = function(photoID, reactionID) {
         let update = {};
         if(reactionID == 1) {
             update = {
                 likes: 1,
-                hearts: 0
+                hearts: 0,
+                clicks: 0
+            }
+        }
+        else if(reactionID == 2){
+            update = {
+                hearts: 1,
+                likes: 0,
+                clicks: 0
             }
         }
         else {
             update = {
-                hearts: 1,
-                likes: 0
+                likes: 0,
+                hearts: 0,
+                clicks: 1
             }
+
         }
         let id = photoID;
                 

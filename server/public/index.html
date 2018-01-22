@@ -21,7 +21,7 @@
                             <div class="flex-row row full-height">
                                     <div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="photo in vm.photoList">
                                     <!-- Card Flip -->
-                                    <div class="flip-container" ng-click="flip = !flip" ng-class="{'flip': flip}">
+                                    <div class="flip-container" ng-click="flip = !flip; updateCounts(photo.id, reaction.id)" ng-class="{'flip': flip}">
                                             <div class="flipper">
                                                 <!-- front content -->
                                                 <div class="front" ng-style="{'background-image':'url({{photo.file_path}})'} " ng-init="photoDetails=false" ng-mouseover="photoDetails=true" ng-mouseleave="photoDetails=false">
@@ -35,7 +35,7 @@
                                                              </aside>
                                                   <div ng-show="photoDetails" class="photoDetails"  data="{{photo.id}}">
                                                         <h2>{{photo.title}}</h2>
-                                                        <div ng-view class="reaction-buttons" ng-repeat="reaction in vm.reactions">
+                                                        <div ng-view class="reaction-buttons" ng-repeat="reaction in vm.reactions" ng-show="reaction.visible">
                                                                 <button data="{{reaction.id}}" class="{{reaction.class}}" ng-click="vm.updateCounts(photo.id, reaction.id)"></button>
                                                              </div>
                                                   </div>
@@ -45,6 +45,7 @@
                                                        
                                                         <h2>{{photo.title}}</h2>
                                                         <p>{{photo.description}}</p>
+                                                        <p class="clicks">Total clicks: {{photo.clicks}}</p>
                                                         <aside class="tallies">
                                                                 <div class="likes">
                                                                    <p>{{photo.likes}}</p>
